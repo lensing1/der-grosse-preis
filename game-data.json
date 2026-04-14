@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "name": "Kategorie 1",
+      "questions": [
+        {
+          "points": 40,
+          "question": "Frage",
+          "answers": ["Antwort 1", "Antwort 2", "Antwort 3", "Antwort 4"]
+        },
+        {
+          "points": 80,
+          "question": "Nächste Frage",
+          "answers": ["A", "B", "C", "D"]
+        }
+      ]
+    }
+  ]
+}

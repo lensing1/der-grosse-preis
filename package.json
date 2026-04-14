@@ -1,0 +1,13 @@
+{
+  "name": "grosser-preis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Großer Preis Quiz App (PWA)",
+  "scripts": {
+    "dev": "live-server --port=8000 --open=index.html --watch=css,js,screens,index.html,game-data.json --ignore=manifest.json,service-worker.js,icons,node_modules,.git",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

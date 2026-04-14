@@ -1,0 +1,32 @@
+<section id="questionScreen" class="question-screen hidden">
+  <div class="question-layout">
+    <div class="question-content">
+      <div id="questionPrompt" class="question-prompt"></div>
+
+      <div class="answers-grid">
+        <div class="answer-card" id="answer1"></div>
+        <div class="answer-card" id="answer2"></div>
+        <div class="answer-card" id="answer3"></div>
+        <div class="answer-card" id="answer4"></div>
+      </div>
+    </div>
+
+    <footer class="question-footer">
+      <span class="triangle-icon" id="closeQuestion" aria-label="Zurück">
+        <svg class="triangle-svg" viewBox="0 0 87 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,50 87,0 87,100" fill="currentColor" class="triangle-polygon" />
+        </svg>
+      </span>
+
+      <div id="questionCategory" class="footer-category">Kategorie</div>
+
+      <span id="questionPoints" class="footer-points">0</span>
+
+      <span class="triangle-icon" id="revealAnswer" aria-label="Lösen">
+        <svg class="triangle-svg" viewBox="0 0 87 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="0,0 87,50 0,100" fill="currentColor" class="triangle-polygon" />
+        </svg>
+      </span>
+    </footer>
+  </div>
+</section>

@@ -1,0 +1,339 @@
+/* Overlay (der dunkle Hintergrund) */
+.settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px;
+
+  background: rgba(6, 16, 28, 0.72);
+  backdrop-filter: blur(4px);
+
+  overflow: hidden;
+}
+
+/* Verstecken */
+.settings-modal.hidden {
+  display: none;
+}
+
+/* Dialog-Box */
+.settings-dialog {
+  position: relative;
+  overflow-y: scroll;
+  z-index: 10000;
+  width: 70%;
+  min-width: 520px;
+
+  background: #ffffff;
+  color: #111827;
+
+  border-radius: 16px;
+  padding: 2em;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 34px);
+}
+
+/* Titel */
+.settings-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Beschreibung */
+.settings-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+/* File Input */
+.settings-file-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+/* Buttons */
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 1em;
+}
+
+/* Button */
+.settings-button {
+  border: none;
+  border-radius: 10px;
+
+  padding: 12px 18px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: #1e3a8a;
+  color: #ffffff;
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Hover Effekt */
+.settings-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Klick Effekt */
+.settings-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+/* Button */
+.downlaod-button {
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  background: lightsalmon;
+  color: black;
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Hover Effekt */
+.download-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Klick Effekt */
+.download-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+.settings-subtitle {
+  margin: 8px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.category-background-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.category-background-section.hidden {
+  display: none;
+}
+
+.category-background-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 88px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.category-background-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-background-input {
+  width: 100%;
+}
+
+.category-background-preview {
+  width: 88px;
+  height: 56px;
+  border-radius: 8px;
+  background: #d1d5db center / cover no-repeat;
+  border: 1px solid #cbd5e1;
+}
+
+.settings-subtitle {
+  margin: 8px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.category-background-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.category-background-section.hidden {
+  display: none;
+}
+
+.category-background-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.category-background-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-background-input {
+  display: none;
+}
+
+.category-background-label {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.category-background-preview {
+  width: 100%;
+  min-height: 96px;
+  border-radius: 12px;
+  background-color: #d1d5db;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #cbd5e1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.category-background-label:hover .category-background-preview {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: #94a3b8;
+}
+
+.category-background-preview.has-image {
+  color: transparent;
+}
+
+.category-background-preview {
+  width: 100%;
+  min-height: 96px;
+  border-radius: 12px;
+
+  background-color: #d1d5db;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border: 1px solid #cbd5e1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+/* Hover Effekt */
+.category-background-label:hover .category-background-preview {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: #94a3b8;
+}
+
+/* Plus Icon */
+.plus-icon {
+  font-size: 36px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+/* Wenn Bild gesetzt → Plus ausblenden */
+.category-background-preview.has-image .plus-icon {
+  opacity: 0;
+}
+
+.category-background-upload {
+    width: 10em;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-background-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.settings-button-danger {
+  background-color: red;
+  width: 12em;
+}
+
+.remove-button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-button:hover {
+  background-color: #d1d5db;
+}

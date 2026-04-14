@@ -1,0 +1,51 @@
+<div id="settingsModal" class="settings-modal">
+  <div class="settings-dialog">
+    <h2 class="settings-title">Spiel laden</h2>
+    <p class="settings-text">
+      Bitte wähle eine Excel-Datei mit Kategorien, Fragen und Antworten aus.
+        <button onclick="window.SettingsScreen.downloadTemplate()" class="downlaod-button">
+            Template herunterladen
+        </button>
+    </p>
+
+    <div class="row">
+        <input
+        type="file"
+        id="fileInput"
+        class="settings-file-input"
+        accept=".xlsx,.xls"
+        />
+        <button
+          id="resetAppButton"
+          class="settings-button settings-button-danger hidden"
+          type="button"
+        >
+          Daten löschen
+        </button>
+    </div>
+
+
+    <div id="categoryBackgroundSection" class="category-background-section hidden">
+      <h3 class="settings-subtitle">Hintergrundbilder pro Kategorie</h3>
+      <p class="settings-text">
+        Wähle optional für jede Kategorie ein eigenes Hintergrundbild.
+      </p>
+
+      <div id="categoryBackgroundList" class="category-background-list"></div>
+    </div>
+
+    <div id="boardBackgroundSection" class="category-background-section hidden">
+          <h3 class="settings-subtitle">Hintergrundbilde Punktetafel</h3>
+      <p class="settings-text">
+        Wähle optional ein Hintergrundbild für den die Punktetafel.
+      </p>
+
+      <div id="boardBackgroundList" class="category-background-list"></div>
+    </div>
+    <div class="settings-actions">
+      <button id="closeSettingsButton" class="settings-button" type="button">
+        Schließen
+      </button>
+    </div>
+  </div>
+</div>
