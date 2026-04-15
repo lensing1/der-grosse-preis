@@ -6,6 +6,7 @@
   background: #456654;
   color: #000;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .question-screen.hidden {
@@ -20,16 +21,19 @@
 }
 
 .question-content {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  gap: 4em;
+  padding: clamp(1em, 2vw, 2em);
+  gap: clamp(1em, 3vh, 4em);
+  overflow: hidden;
 }
 
 .question-prompt {
   min-height: 3em;
-  height: 5em;
+  height: auto;
+  max-height: 20vh;
   background: white;
   border-radius: 22px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
@@ -37,25 +41,27 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 2.5em;
+  font-size: clamp(1.5em, 2.8vw, 2.5em);
   line-height: 1.25;
   font-weight: 400;
   padding: 0.5em;
   opacity: 0.95;
+  overflow: auto;
 }
 
 .answers-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 3em;
+  gap: clamp(1em, 2vw, 3em);
   height: 100%;
-  margin-right: 3em;
-  margin-left: 3em;
+  min-height: 0;
+  margin-right: clamp(0.5em, 2vw, 3em);
+  margin-left: clamp(0.5em, 2vw, 3em);
 }
 
 .answer-card {
-  min-height: 122px;
+  min-height: 0;
   background: white;
   border-radius: 22px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
@@ -63,12 +69,13 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.5em;
-  font-size: 2.5em;
+  padding: clamp(0.4em, 1vw, 0.5em);
+  font-size: clamp(1.3em, 2.6vw, 2.5em);
   line-height: 1.2;
   font-weight: 400;
   opacity: 0.95;
   cursor: pointer;
+  overflow: auto;
   transition:
     background-color 0.5s ease,
     opacity 0.45s ease,
@@ -154,6 +161,7 @@
 }
 
 .question-footer {
+  flex: 0 0 6em;
   height: 6em;
   background: #364c41;
   display: flex;
@@ -180,7 +188,7 @@
 }
 
 .footer-category {
-  font-size: 4em;
+  font-size: clamp(2.2em, 4vw, 4em);
   color: white;
   font-weight: 400;
   white-space: nowrap;
@@ -190,7 +198,7 @@
 }
 
 .footer-points {
-  font-size: 4em;
+  font-size: clamp(2.2em, 4vw, 4em);
   color: var(--point-color);
   font-weight: 400;
 }
