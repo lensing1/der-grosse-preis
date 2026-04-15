@@ -11,6 +11,15 @@ window.SettingsScreen = {
     document.getElementById("settingsModal")?.classList.toggle("hidden");
   },
 
+  downloadTemplate() {
+    const link = document.createElement("a");
+    link.href = "./Der_Große_Preis_Template.xlsx";
+    link.download = "Der_Große_Preis_Template.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  },
+
   async resetAppData() {
     const confirmed = window.confirm(
       "Willst du wirklich alle gespeicherten App-Daten löschen? Bilder, Spielstand und Cache gehen dabei verloren."
