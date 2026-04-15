@@ -181,17 +181,5 @@ window.QuestionScreen = {
         window.QuestionScreen.revealSingleAnswer(el);
       });
     });
-
-    document.addEventListener("keydown", (event) => {
-      const questionScreen = document.getElementById("questionScreen");
-
-      if (
-        event.key === "Escape" &&
-        questionScreen &&
-        !questionScreen.classList.contains("hidden")
-      ) {
-        window.QuestionScreen.close();
-      }
-    });
   }
 };

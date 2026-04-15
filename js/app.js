@@ -195,9 +195,17 @@ async function init() {
   }
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      window.SettingsScreen.toggle();
+    if (event.key !== "Escape") return;
+
+    const questionScreen = document.getElementById("questionScreen");
+    const settingsModal = document.getElementById("settingsModal");
+
+    if (questionScreen && !questionScreen.classList.contains("hidden")) {
+      window.QuestionScreen.close();
+      return;
     }
+
+    window.SettingsScreen.toggle();
   });
 
   const isLocalhost =
