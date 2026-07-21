@@ -256,6 +256,17 @@ window.SettingsScreen = {
     });
   },
 
+  renderAnswerLabelsSection() {
+    const section = document.getElementById("answerLabelsSection");
+
+    if (!section) return;
+
+    const hasGameData =
+      !!window.AppState.gameData?.categories?.length;
+
+    section.classList.toggle("hidden", !hasGameData);
+  },
+
   bind() {
     const fileInput = document.getElementById("fileInput");
     const closeSettingsButton = document.getElementById("closeSettingsButton");
@@ -294,6 +305,7 @@ window.SettingsScreen = {
           window.BoardScreen.render();
           window.SettingsScreen.renderCategoryBackgroundInputs();
           window.SettingsScreen.renderBoardBackgroundInputs();
+          window.SettingsScreen.renderAnswerLabelsSection();
 
         } catch (error) {
           console.error(error);
