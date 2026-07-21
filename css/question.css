@@ -221,3 +221,23 @@
   fill: var(--cell-hover-bg);
   filter: brightness(1.05);
 }
+
+.answer-label {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1;
+  margin-right: .5em;
+}
+
+.answer-text {
+  width: 100%;
+  text-align: center;
+}
+
+.single-answer-reveal .answer-label {
+    display: none;
+}
+
+.hide-answer-labels .answer-label {
+  display: none;
+}

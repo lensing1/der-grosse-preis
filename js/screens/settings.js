@@ -312,5 +312,24 @@ window.SettingsScreen = {
     closeSettingsButton?.addEventListener("click", () => {
       window.SettingsScreen.close();
     });
+
+    const answerLabelsSwitch = document.getElementById("answerLabelsSwitch");
+
+    if (answerLabelsSwitch) {
+      // Restore saved value
+      answerLabelsSwitch.checked =
+        window.AppState.answerLabelsEnabled;
+
+      // Save changes
+      answerLabelsSwitch.addEventListener("change", (event) => {
+        window.AppState.answerLabelsEnabled =
+          event.target.checked;
+
+        window.AppStorage.save();
+
+        // Immediately update labels if question screen is visible
+        window.QuestionScreen.updateAnswerLabels?.();
+      });
+    }
   }
 };

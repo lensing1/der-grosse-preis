@@ -35,13 +35,31 @@
     </div>
 
     <div id="boardBackgroundSection" class="category-background-section hidden">
-          <h3 class="settings-subtitle">Hintergrundbilde Punktetafel</h3>
+          <h3 class="settings-subtitle">Hintergrundbild Punktetafel</h3>
       <p class="settings-text">
         Wähle optional ein Hintergrundbild für den die Punktetafel.
       </p>
 
       <div id="boardBackgroundList" class="category-background-list"></div>
     </div>
+    
+    <div id="answerLabelsSection" class="category-background-section">
+      <h3 class="settings-subtitle">Antwortbeschriftungen</h3>
+      <p class="settings-text">
+        Zeige die Buchstaben A, B, C und D neben den Antwortmöglichkeiten an.
+      </p>
+
+      <label class="settings-switch">
+        <input
+          type="checkbox"
+          id="answerLabelsSwitch"
+          checked
+        />
+        <span class="settings-switch-slider"></span>
+        <span class="settings-switch-label">Antwortbeschriftungen anzeigen</span>
+      </label>
+    </div>
+
     <div class="settings-actions">
       <button id="closeSettingsButton" class="settings-button" type="button">
         Schließen

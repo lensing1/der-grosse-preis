@@ -10,6 +10,7 @@ window.QuestionScreen = {
     this.currentCategoryName = categoryName;
     this.currentQuestionItem = questionItem;
     this.answerRevealed = false;
+    this.updateAnswerLabels();
 
     document.getElementById("questionCategory").textContent = categoryName;
     document.getElementById("questionPoints").textContent = questionItem.points ?? "";
@@ -26,14 +27,14 @@ window.QuestionScreen = {
         const el = document.getElementById(id);
         if (!el) return;
 
-        el.textContent = "";
+        el.querySelector(".answer-text").textContent = "";
         el.classList.remove("answer-visible", "single-answer-reveal");
         el.classList.add("answer-hidden");
       });
 
       const firstAnswer = document.getElementById("answer1");
       if (firstAnswer) {
-        firstAnswer.textContent = answers[0];
+        firstAnswer.querySelector(".answer-text").textContent = answers[0];
         firstAnswer.classList.add("single-answer-reveal", "answer-hidden");
       }
     } else {
@@ -42,7 +43,7 @@ window.QuestionScreen = {
         if (!el) return;
 
         const answerText = answers[index] || "";
-        el.textContent = answerText;
+        el.querySelector(".answer-text").textContent = answerText;
 
         el.classList.remove(
           "single-answer-reveal",
@@ -102,7 +103,7 @@ window.QuestionScreen = {
   revealSingleAnswer(answerElement) {
     if (!this.currentQuestionItem || !answerElement) return;
 
-    const answerText = answerElement.textContent.trim();
+    const answerText = answerElement.querySelector(".answer-text")?.textContent.trim() || "";
     if (!answerText) return;
 
     const correctAnswer = (this.currentQuestionItem.correctAnswer || "").trim();
@@ -126,7 +127,11 @@ window.QuestionScreen = {
     if (answers.length === 1) {
       const el = document.getElementById("answer1");
       if (el) {
-        el.textContent = answers[0];
+        const answerTextElement = el.querySelector(".answer-text");
+
+        if (answerTextElement) {
+          answerTextElement.textContent = answers[0];
+        }
         el.classList.remove("correct", "wrong");
 
         requestAnimationFrame(() => {
@@ -149,7 +154,12 @@ window.QuestionScreen = {
       const el = document.getElementById(id);
       if (!el) return;
 
-      const answerText = el.textContent.trim();
+      const answerTextElement = el.querySelector(".answer-text");
+
+      if (!answerTextElement) return;
+
+      const answerText = answerTextElement.textContent.trim();
+
       if (!answerText) return;
 
       el.classList.remove("correct", "wrong");
@@ -181,5 +191,39 @@ window.QuestionScreen = {
         window.QuestionScreen.revealSingleAnswer(el);
       });
     });
-  }
+
+    document.addEventListener("keydown", (event) => {
+      // Only handle shortcuts while the question screen is open
+      const questionScreen = document.getElementById("questionScreen");
+      if (!questionScreen || questionScreen.classList.contains("hidden")) {
+        return;
+      }
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+        this.revealAnswer();
+        return;
+      }
+
+      if (["1", "2", "3", "4"].includes(event.key)) {
+        event.preventDefault();
+
+        const answerElement = document.getElementById(
+          `answer${event.key}`
+        );
+
+        if (answerElement) {
+          this.revealSingleAnswer(answerElement);
+        }
+      }
+    });
+  },
+
+  updateAnswerLabels() {
+    const questionScreen = document.getElementById("questionScreen");
+    questionScreen?.classList.toggle(
+      "hide-answer-labels",
+      !window.AppState.answerLabelsEnabled
+    );
+  },
 };

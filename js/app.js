@@ -132,7 +132,8 @@ window.AppStorage = {
     const state = {
       gameData: window.AppState?.gameData || { categories: [] },
       usedQuestions: window.AppState?.usedQuestions || {},
-      layout: window.AppState?.layout || {}
+      layout: window.AppState?.layout || {},
+      answerLabelsEnabled: window.AppState?.answerLabelsEnabled ?? true
     };
 
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(state));
@@ -165,7 +166,8 @@ async function init() {
     categoryBackgrounds: {},
     boardBackground: "",
     usedQuestions: savedState?.usedQuestions || {},
-    layout: savedState?.layout || {}
+    layout: savedState?.layout || {},
+    answerLabelsEnabled: savedState?.answerLabelsEnabled ?? true
   };
 
   const categories = window.AppState.gameData?.categories || [];
@@ -185,6 +187,13 @@ async function init() {
   window.BoardScreen.render();
   window.SettingsScreen.bind();
   window.QuestionScreen.bind();
+
+  const answerLabelsSwitch = document.getElementById("answerLabelsSwitch");
+
+  if (answerLabelsSwitch) {
+    answerLabelsSwitch.checked =
+      window.AppState.answerLabelsEnabled;
+  }
 
   window.SettingsScreen.renderCategoryBackgroundInputs?.();
   window.SettingsScreen.renderBoardBackgroundInputs?.();

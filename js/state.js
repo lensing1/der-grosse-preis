@@ -3,5 +3,6 @@ window.AppState = {
   categoryBackgrounds: {},
   boardBackground: "",
   usedQuestions: {},
-  layout: {}
+  layout: {},
+  answerLabelsEnabled: true,
 };
