@@ -258,13 +258,30 @@ window.SettingsScreen = {
 
   renderAnswerLabelsSection() {
     const section = document.getElementById("answerLabelsSection");
+    const categories = window.AppState.gameData?.categories || [];
 
     if (!section) return;
 
-    const hasGameData =
-      !!window.AppState.gameData?.categories?.length;
+    if (!categories.length) {
+      section.classList.add("hidden");
+      return;
+    }
 
-    section.classList.toggle("hidden", !hasGameData);
+    section.classList.remove("hidden");
+  },
+
+  renderBoardClickedButton() {
+    const section = document.getElementById("resetBoardClickedSection");
+    const categories = window.AppState.gameData?.categories || [];
+
+    if (!section) return;
+
+    if (!categories.length) {
+      section.classList.add("hidden");
+      return;
+    }
+
+    section.classList.remove("hidden");
   },
 
   bind() {
@@ -284,6 +301,15 @@ window.SettingsScreen = {
       const hasGameData = !!window.AppState.gameData?.categories?.length;
       resetButton.classList.toggle("hidden", !hasGameData);
     }
+
+    document.getElementById("resetBoardClickedButton")
+    ?.addEventListener("click", () => {
+      window.AppState.usedQuestions = [];
+
+      window.AppStorage.save();
+
+      window.BoardScreen.render();
+    });
 
     fileInput.addEventListener("change", (event) => {
       const file = event.target.files?.[0];
@@ -306,6 +332,7 @@ window.SettingsScreen = {
           window.SettingsScreen.renderCategoryBackgroundInputs();
           window.SettingsScreen.renderBoardBackgroundInputs();
           window.SettingsScreen.renderAnswerLabelsSection();
+          window.SettingsScreen.renderBoardClickedButton();
 
         } catch (error) {
           console.error(error);

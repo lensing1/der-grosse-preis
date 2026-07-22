@@ -2,7 +2,7 @@ window.AppState = {
   gameData: { categories: [] },
   categoryBackgrounds: {},
   boardBackground: "",
-  usedQuestions: {},
+  usedQuestions: [],
   layout: {},
   answerLabelsEnabled: true,
 };

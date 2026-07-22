@@ -20,6 +20,11 @@ window.QuestionScreen = {
     const answers = rawAnswers.filter((answer) => (answer || "").trim() !== "");
     const answerIds = ["answer1", "answer2", "answer3", "answer4"];
 
+    if (!window.AppState.usedQuestions.includes(questionItem.id)) {
+      window.AppState.usedQuestions.push(questionItem.id);
+      window.AppStorage.save();
+    }
+
     this.resetAnswerStyles();
 
     if (answers.length === 1) {
@@ -199,9 +204,14 @@ window.QuestionScreen = {
         return;
       }
 
-      if (event.key === "Enter") {
+      if (event.key === "Enter" || event.key == "ArrowRight") {
         event.preventDefault();
         this.revealAnswer();
+        return;
+      }
+
+      if (event.key == "ArrowLeft") {
+        window.QuestionScreen.close();
         return;
       }
 

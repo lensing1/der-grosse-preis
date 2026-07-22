@@ -131,7 +131,9 @@ window.AppStorage = {
   save() {
     const state = {
       gameData: window.AppState?.gameData || { categories: [] },
-      usedQuestions: window.AppState?.usedQuestions || {},
+      usedQuestions: Array.isArray(window.AppState?.usedQuestions) 
+        ? window.AppState.usedQuestions
+        : [],
       layout: window.AppState?.layout || {},
       answerLabelsEnabled: window.AppState?.answerLabelsEnabled ?? true
     };
@@ -165,12 +167,18 @@ async function init() {
     gameData: savedState?.gameData || { categories: [] },
     categoryBackgrounds: {},
     boardBackground: "",
-    usedQuestions: savedState?.usedQuestions || {},
+    usedQuestions: Array.isArray(savedState?.usedQuestions) ? savedState.usedQuestions : [],
     layout: savedState?.layout || {},
     answerLabelsEnabled: savedState?.answerLabelsEnabled ?? true
   };
 
   const categories = window.AppState.gameData?.categories || [];
+
+  categories.forEach((category, categoryIndex) => {
+    category.questions?.forEach((question, questionIndex) => {
+      question.id = `${categoryIndex}-${questionIndex}`;
+    });
+  });
 
   for (const category of categories) {
     const image = await window.AppImageStore.get(`category:${category.name}`);
@@ -197,6 +205,8 @@ async function init() {
 
   window.SettingsScreen.renderCategoryBackgroundInputs?.();
   window.SettingsScreen.renderBoardBackgroundInputs?.();
+  window.SettingsScreen.renderAnswerLabelsSection?.();
+  window.SettingsScreen.renderBoardClickedButton?.();
   window.BoardScreen.applyBackground?.();
 
   if (!window.AppState.gameData?.categories?.length) {
