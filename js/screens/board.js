@@ -19,6 +19,27 @@ window.BoardScreen = {
     document.getElementById("BoardScreen")?.classList.add("hidden");
   },
 
+  applyBackground() {
+    const boardScreen = document.getElementById("boardScreen");
+    if (!boardScreen) return;
+
+    const backgroundUrl = window.AppState.boardBackground;
+
+    if (backgroundUrl) {
+      boardScreen.style.backgroundImage = `url("${backgroundUrl}")`;
+      boardScreen.style.backgroundSize = "cover";
+      boardScreen.style.backgroundPosition = "center";
+      boardScreen.style.backgroundRepeat = "no-repeat";
+      boardScreen.style.backgroundColor = "";
+    } else {
+      boardScreen.style.backgroundImage = "";
+      boardScreen.style.background = "linear-gradient(0deg, rgb(79, 148, 171) 0%, rgb(30, 85, 107) 100%)";
+      boardScreen.style.backgroundSize = "";
+      boardScreen.style.backgroundPosition = "";
+      boardScreen.style.backgroundRepeat = "";
+    }
+  },
+
   render() {
     const board = document.getElementById("board");
     const categories = window.AppState.gameData.categories || [];
