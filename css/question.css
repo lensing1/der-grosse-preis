@@ -1,8 +1,6 @@
 .question-screen {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
   background: #456654;
   color: #000;
   z-index: 1000;
